@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What’s for dinner? Healthy dinner ideas from the ingredients you have</title>
+<meta name="description" content="Pick the ingredients in your kitchen and get dinner ideas from around the world, with calories, protein, cooking time and the story behind each dish.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12203A;--muted:#4A5873;--cobalt:#1E4FD6;--deep:#142F8F;--tomato:#C93A25;--butter:#FFE7A0;--bg:#F4F7FB;--track:#DDE3EC}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 'Figtree',system-ui,sans-serif}
+h1,h2,h3{font-family:'Bricolage Grotesque','Figtree',sans-serif;margin:0}
+:focus-visible{outline:3px solid var(--butter);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.hero{background:var(--cobalt);color:#fff;padding:48px 0 64px;border-radius:0 0 40px 40px}
+.hero h1{font-size:clamp(2.8rem,9vw,5.8rem);font-weight:800;line-height:.92;letter-spacing:-.04em;max-width:10ch}
+.hero p{max-width:48ch;margin:18px 0 0;font-size:1.1rem;color:#DCE6FF}
+.app{display:grid;grid-template-columns:minmax(300px,390px) 1fr;gap:36px;align-items:start;margin-top:-28px;padding-bottom:56px}
+.panel{position:sticky;top:14px;max-height:calc(100vh - 28px);overflow:auto;background:#fff;border-radius:24px;padding:20px;box-shadow:0 10px 30px rgba(18,32,58,.12)}
+.plate{position:relative;width:210px;height:210px;margin:0 auto 6px;border-radius:50%;background:#fff;border:10px solid var(--butter);box-shadow:inset 0 0 0 3px var(--ink),0 0 0 3px var(--ink)}
+.plate>span{position:absolute;font-size:34px;line-height:1;transform:translate(-50%,-50%)}
+.plate>em{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-style:normal;color:var(--muted);font-size:.9rem;padding:34px}
+.plate>b{position:absolute;right:-6px;bottom:2px;background:var(--tomato);color:#fff;border-radius:999px;padding:2px 10px;font-size:.85rem}
+.group{margin:16px 0}.group h2{font-size:1rem;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font:500 .94rem 'Figtree',sans-serif;color:var(--ink);background:#fff;border:1.5px solid var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer;transition:background .15s}
+.chip:hover{background:var(--butter)}.chip[aria-pressed=true]{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:10px 0}
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:5px}
+select{font:inherit;color:var(--ink);border:1.5px solid var(--ink);border-radius:10px;padding:8px 10px;background:#fff;min-width:190px}
+.btn{font:600 1rem 'Figtree',sans-serif;cursor:pointer;border:1.5px solid var(--ink);border-radius:10px;padding:9px 16px;background:#fff;color:var(--ink)}
+.btn:hover{background:var(--butter)}.btn.solid{background:var(--ink);color:#fff}.btn.solid:hover{background:#26375a}
+.jump{display:none;width:100%}
+.count{font:700 1.6rem 'Bricolage Grotesque',sans-serif;margin:30px 0 14px}
+.card{background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 6px 20px rgba(18,32,58,.09)}
+.card.pick{outline:3px solid var(--cobalt)}
+.band{display:flex;align-items:center;gap:14px;padding:14px 20px}
+.band i{font-style:normal;font-size:2.4rem;line-height:1}
+.band strong{display:block;font-size:1.02rem}.band small{display:block;color:#33415C;font-size:.88rem}
+.body{padding:14px 20px 12px}
+.card h3{font-size:1.32rem;letter-spacing:-.015em;line-height:1.2}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:start}
+.badge{background:var(--tomato);color:#fff;font-weight:600;font-size:.82rem;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.stats{display:flex;flex-wrap:wrap;gap:6px 20px;margin:10px 0}.stats b{font-size:1.05rem}.stats span{color:var(--muted);font-size:.9rem;margin-left:4px}
+.stats .p b{background:var(--butter);padding:1px 8px;border-radius:6px}
+.bar{height:6px;background:var(--track);border-radius:3px;margin:6px 0;overflow:hidden}.bar i{display:block;height:100%;background:var(--cobalt)}
+.small{color:var(--muted);font-size:.93rem;margin:0}
+details{margin-top:10px;border-top:1.5px solid var(--track);padding-top:8px}summary{cursor:pointer;font-weight:600}
+details h4{margin:12px 0 4px;font-size:.95rem}details p{margin:0 0 6px}details ol{margin:4px 0;padding-left:22px}details li{margin-bottom:5px}
+.empty{border:2px dashed var(--ink);border-radius:20px;padding:26px 22px}.empty h3{font-size:1.35rem;margin-bottom:8px}.empty p{margin:0 0 14px;color:var(--muted);max-width:44ch}
+.about{border-top:2px solid var(--ink);padding:34px 0 48px}.cols{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.about h2{font-size:1.45rem;margin-bottom:8px}.about p{margin:0 0 10px;max-width:62ch}
+@media(max-width:820px){.app{grid-template-columns:1fr;gap:22px}.panel{position:static;max-height:none}.jump{display:block}.cols{grid-template-columns:1fr}.hero{padding-top:32px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.chip{transition:none}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<h1>What’s for dinner?</h1>
+<p>Fill your plate with what’s in your kitchen. Get dinner ideas from around the world, with calories, protein, cooking time and the story of each dish.</p>
+</div></header>
+
+<main class="wrap"><div class="app">
+<section class="panel" aria-label="Your ingredients">
+<div class="plate" id="plate" aria-live="polite"></div>
+<div id="groups"></div>
+<div class="controls">
+<div><label for="goal">Show me dinners that are</label>
+<select id="goal"><option value="any">Any kind</option><option value="protein">High protein (30 g or more)</option><option value="light">Light (450 kcal or less)</option><option value="quick">Quick (20 minutes or less)</option><option value="veg">Vegetarian</option></select></div>
+<button class="btn" id="clear" type="button">Clear plate</button>
+</div>
+<button class="btn solid jump" id="jump" type="button">Show dinner ideas</button>
+</section>
+<section id="results" tabindex="-1" aria-label="Dinner ideas">
+<button class="btn solid" id="surprise" type="button" style="margin-top:34px">Pick one for me</button>
+<p class="count" id="count" aria-live="polite" style="margin-top:16px"></p>
+<div id="list"></div>
+</section>
+</div></main>
+
+<section class="about"><div class="wrap cols">
+<div><h2>How the dinner picker works</h2>
+<p>Choose everything you have, from chicken and eggs to onions and rice. The picker compares your plate with its recipes and shows dishes you can make with at least half of the ingredients, closest match first.</p>
+<p>“Ready to cook” means you need nothing else. Otherwise you’ll see exactly what’s missing. We assume you always have oil, salt, pepper, common spices, soy sauce and butter.</p></div>
+<div><h2>About the numbers and the stories</h2>
+<p>Calories and protein are rough estimates for one serving and will change with your portions and brands. Dish histories are simplified, and many classic dishes have disputed origins.</p>
+<p>This tool offers general information, not medical or dietary advice. If you have a health condition or food allergy, ask a doctor or registered dietitian.</p></div>
+</div></section>
+
+<script>
+(function(){
+var I=[['chicken','Chicken','🍗','Protein'],['beef','Ground beef','🥩','Protein'],['salmon','Salmon','🐟','Protein'],['tuna','Canned tuna','🥫','Protein'],['shrimp','Shrimp','🦐','Protein'],['bacon','Bacon','🥓','Protein'],['eggs','Eggs','🥚','Protein'],['tofu','Tofu','🧈','Protein'],['lentils','Lentils','🫘','Protein'],['chickpeas','Chickpeas','🌰','Protein'],
+['rice','Rice','🍚','Grains and starches'],['pasta','Pasta','🍝','Grains and starches'],['noodles','Rice noodles','🍜','Grains and starches'],['couscous','Couscous','🥣','Grains and starches'],['potatoes','Potatoes','🥔','Grains and starches'],['bread','Bread or wraps','🍞','Grains and starches'],
+['tomato','Tomatoes','🍅','Vegetables'],['onion','Onion','🧅','Vegetables'],['garlic','Garlic','🧄','Vegetables'],['spinach','Spinach','🥬','Vegetables'],['pepper','Bell pepper','🫑','Vegetables'],['carrot','Carrots','🥕','Vegetables'],['zucchini','Zucchini','🥒','Vegetables'],['broccoli','Broccoli','🥦','Vegetables'],['mushrooms','Mushrooms','🍄','Vegetables'],
+['avocado','Avocado','🥑','Extras'],['lemon','Lemon','🍋','Extras'],['olives','Olives','🫒','Extras'],['cheese','Cheese','🧀','Extras'],['yogurt','Yogurt','🥛','Extras'],['coconut','Coconut milk','🥥','Extras']];
+var T=['#FFE7A0','#CFEFE0','#CFE0FF','#FFD9D2','#E3DAFF'];
+// name|emoji|country|when|story|tone|time|kcal|protein|veg|ingredients|steps
+var R=[
+['Spaghetti carbonara','🍝','Italy','Mid-1900s','Most food historians place its birth in Rome in the 1940s. The classic recipe uses eggs, hard cheese and cured pork, and no cream.',0,25,620,28,0,'pasta,eggs,cheese,bacon','Boil the pasta.|Crisp the bacon in a pan.|Whisk eggs with grated cheese and black pepper.|Off the heat, toss everything with a splash of pasta water until creamy.'],
+['Beef bolognese','🍝','Italy','Late 1700s','Meat ragù recipes from Emilia-Romagna go back to the late 1700s. The Bologna academy of cuisine registered an official version in 1982.',3,35,590,36,0,'pasta,beef,tomato,onion,garlic','Brown the beef with chopped onion and garlic.|Add chopped tomato and simmer for 20 minutes.|Boil the pasta and toss with the sauce.'],
+['Italian frittata','🍳','Italy','Traditional','A household dish with no single inventor, made to use up vegetables and cheese in a flat, baked omelette.',1,30,300,21,1,'eggs,zucchini,cheese,onion','Soften sliced onion and zucchini in an oven-safe pan.|Pour over beaten eggs and add cheese.|Bake at 190°C (375°F) for 12 minutes.'],
+['Chicken tikka masala','🍛','India and the UK','1970s (disputed)','Britain and India both claim it. Many stories place it in a Glasgow or Birmingham restaurant in the 1970s, built on grilled Indian chicken tikka.',3,40,560,40,0,'chicken,yogurt,tomato,onion,garlic,rice','Marinate the chicken in yogurt, garlic and spices.|Fry onion, add chopped tomato and simmer to a sauce.|Add the chicken and cook for 15 minutes.|Serve over rice.'],
+['Chana masala','🍲','India','Traditional','A chickpea curry from the Punjab region of North India, eaten for generations as everyday home food.',0,35,380,15,1,'chickpeas,tomato,onion,garlic','Fry onion and garlic with cumin and coriander.|Add chopped tomato and cook down for 8 minutes.|Stir in chickpeas and simmer for 15 minutes.'],
+['Pad Thai','🍜','Thailand','1930s and 1940s','Popularized during the 1930s and 1940s, when Thailand’s government promoted a national noodle dish.',1,25,520,30,0,'noodles,shrimp,eggs,garlic','Soak the noodles until soft.|Fry garlic and shrimp, then push aside and scramble an egg.|Add noodles, soy sauce and lime or lemon juice and toss for 3 minutes.'],
+['Thai coconut chicken curry','🥥','Thailand','Early 1900s','Green curry as known today is often dated to the early 1900s, though coconut milk curries are much older in Southeast Asia.',1,35,540,35,0,'chicken,coconut,pepper,rice,onion','Cook onion and pepper in a pan with curry paste or spices.|Add chicken and fry for 5 minutes.|Pour in coconut milk and simmer for 15 minutes.|Serve with rice.'],
+['Egg fried rice','🍚','China','About 1,400 years ago','Legend traces fried rice to China’s Sui dynasty. It became the classic way to turn leftover rice into a meal.',3,20,450,16,1,'rice,eggs,carrot,onion','Use cooked, cooled rice.|Stir-fry diced carrot and onion.|Scramble in two eggs, add the rice and soy sauce, and fry for 3 minutes.'],
+['Tofu and broccoli stir-fry','🥦','China','About 2,000 years ago','Tofu is credited to China during the Han dynasty, roughly two thousand years ago.',1,25,430,24,1,'tofu,broccoli,pepper,rice','Press and cube the tofu, then fry until crisp.|Add broccoli and sliced pepper with soy sauce and a splash of water.|Cover for 3 minutes and serve over rice.'],
+['Salmon teriyaki bowl','🍱','Japan','1600s to 1800s','The glazed teriyaki cooking method dates to Japan’s Edo period (1603 to 1868).',2,25,520,37,0,'salmon,rice,broccoli,garlic','Cook the rice and steam the broccoli.|Pan-fry the salmon for 4 minutes per side.|Glaze with soy sauce, garlic and a pinch of sugar, then serve over rice.'],
+['Oyakodon','🍳','Japan','1891','This chicken and egg rice bowl is commonly credited to a Tokyo restaurant in 1891. Its name means “parent and child”.',4,25,540,36,0,'chicken,eggs,onion,rice','Simmer sliced onion and chicken in soy sauce and a little water.|Pour in beaten eggs and cover for 1 minute.|Slide over hot rice.'],
+['Shakshuka','🍳','Tunisia and North Africa','Ottoman period','Tomatoes only reached the region after the 1500s, so the dish took shape later. Today it’s loved from Tunisia to Israel.',3,25,330,19,1,'eggs,tomato,onion,pepper','Soften onion and pepper with paprika and cumin.|Add chopped tomatoes and simmer for 10 minutes.|Crack in the eggs, cover and cook for 5 minutes.'],
+['Menemen','🍳','Turkey','Traditional','A soft scramble of eggs, tomato and peppers named after the town of Menemen near İzmir.',0,20,320,18,1,'eggs,tomato,pepper,onion','Cook onion and pepper in oil until soft.|Add chopped tomato and cook for 5 minutes.|Stir in the eggs gently until just set.'],
+['Moroccan chickpea tagine','🍲','Morocco','Centuries old','Named after the clay pot it’s cooked in. The cone-shaped lid returns steam to the stew.',2,40,410,15,1,'chickpeas,tomato,onion,carrot,garlic','Soften onion and garlic with cumin, paprika and ginger.|Add tomato, carrot and a cup of water and simmer for 20 minutes.|Add chickpeas and cook 10 more minutes.'],
+['Chicken couscous bowl','🥣','Morocco, Algeria, Tunisia','About 1,000 years old','UNESCO recognized couscous as shared cultural heritage of the Maghreb in 2020.',1,30,560,44,0,'chicken,couscous,zucchini,chickpeas','Cover couscous with hot water for 5 minutes.|Pan-fry diced chicken with cumin and paprika.|Add zucchini and chickpeas for 6 minutes.|Fluff the couscous and top with the chicken.'],
+['Koshari','🍛','Egypt','1800s','Egypt’s street-food favorite layers rice, lentils, pasta and a spiced tomato sauce. It likely took shape in the 1800s.',4,45,600,22,1,'rice,lentils,pasta,tomato,onion','Cook the rice, lentils and pasta separately.|Simmer chopped tomato with garlic and cumin into a sauce.|Layer it all and top with fried onions.'],
+['Greek salad','🥗','Greece','1900s','The tomato and cucumber version served in tavernas became standard in the 20th century.',1,10,320,12,1,'tomato,zucchini,onion,olives,cheese','Chop tomato and zucchini or cucumber.|Add thin onion, olives and cubed cheese.|Dress with olive oil, lemon and salt.'],
+['Greek lemon chicken and potatoes','🍋','Greece','Traditional','Slow-roasted in lemon and olive oil, this is a Sunday-lunch classic across Greece.',2,50,550,40,0,'chicken,potatoes,lemon,garlic','Toss chicken and wedged potatoes with garlic, oil and lemon juice.|Roast at 200°C (400°F) for 45 minutes, turning once.'],
+['Gambas al ajillo','🦐','Spain','Traditional','A sizzling garlic shrimp tapa found in bars across Spain.',3,15,330,28,0,'shrimp,garlic,lemon,bread','Gently fry sliced garlic in oil with chili if you like.|Add shrimp and cook for 3 minutes.|Finish with lemon and mop up the oil with bread.'],
+['Spanish tortilla','🥔','Spain','Early 1800s','The potato omelette appears in writing in the early 1800s and is now Spain’s most famous tapa.',0,35,400,17,1,'potatoes,eggs,onion','Slowly fry sliced potato and onion in oil until soft.|Mix with beaten eggs.|Cook in a pan until set, flipping once.'],
+['Ratatouille','🍆','France','1700s','A farmhouse vegetable stew from Nice and Provence, long made with summer produce.',2,40,220,5,1,'tomato,zucchini,pepper,onion,garlic','Soften onion and garlic in olive oil.|Add pepper, zucchini and tomato.|Simmer gently for 30 minutes.'],
+['Huevos rancheros','🍳','Mexico','1800s and 1900s','The name means “ranch-style eggs”, a hearty farm breakfast of eggs on tortillas with salsa.',1,25,450,22,1,'eggs,tomato,onion,bread','Fry onion and tomato into a quick salsa.|Warm the tortillas.|Fry the eggs and serve on tortillas with the salsa.'],
+['Chili con carne','🌶️','USA (Texas)','1800s','Linked to San Antonio’s “chili queens” in the 1800s, and still fiercely debated over whether it should contain beans.',3,45,520,38,0,'beef,tomato,onion,garlic','Brown beef with onion and garlic.|Add tomato, chili and cumin.|Simmer for 30 minutes.'],
+['Cottage pie','🥧','United Kingdom','1791','The name “cottage pie” was first recorded in 1791, when potatoes were a food of the poor.',4,50,520,30,0,'beef,potatoes,carrot,onion','Brown beef with onion and carrot.|Boil and mash the potatoes with butter.|Top the meat with the mash and bake at 200°C (400°F) for 20 minutes.'],
+['Jollof rice','🍅','West Africa','Centuries old','Often traced to the Wolof people of Senegambia, it’s now a proud dish across Nigeria, Ghana and beyond.',0,45,540,35,0,'rice,tomato,onion,chicken','Cook onion and tomato into a thick red base.|Add rice, chicken and stock.|Cover and cook on low until the rice is tender.'],
+['Poke-style tuna bowl','🥑','Hawaii, USA','Ancient roots, modern 1970s','Native Hawaiians seasoned raw fish for centuries. The bowl style spread in the 1970s.',2,15,510,36,0,'tuna,avocado,rice,lemon','Spoon cooked rice into a bowl.|Top with tuna and sliced avocado.|Dress with soy sauce and lemon juice.'],
+['Avocado egg toast','🥑','Australia','1990s and 2010s','Cafés in Australia made it a menu staple, and it went worldwide in the 2010s.',1,10,380,17,1,'bread,avocado,eggs','Toast the bread.|Mash avocado on top with salt and pepper.|Add a fried or poached egg.']
+].map(function(a){return{n:a[0],e:a[1],c:a[2],w:a[3],s:a[4],t:T[a[5]],time:a[6],kcal:a[7],p:a[8],v:!!a[9],ing:a[10].split(','),st:a[11].split('|')}});
+
+var by={},sel={},cur=[];I.forEach(function(i){by[i[0]]=i});
+var $=function(x){return document.getElementById(x)},G=$('groups'),L=$('list'),C=$('count'),P=$('plate');
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e}
+var gs=[];I.forEach(function(i){if(gs.indexOf(i[3])<0)gs.push(i[3])});
+gs.forEach(function(g){var w=el('div','group');w.appendChild(el('h2',0,g));var c=el('div','chips');
+I.filter(function(i){return i[3]===g}).forEach(function(i){var b=el('button','chip',i[2]+' '+i[1]);b.type='button';b.dataset.id=i[0];b.setAttribute('aria-pressed','false');
+b.onclick=function(){if(sel[i[0]])delete sel[i[0]];else sel[i[0]]=1;sync();render()};c.appendChild(b)});w.appendChild(c);G.appendChild(w)});
+function sync(){[].forEach.call(G.querySelectorAll('.chip'),function(b){b.setAttribute('aria-pressed',sel[b.dataset.id]?'true':'false')})}
+function plate(){P.innerHTML='';var k=Object.keys(sel);
+if(!k.length){P.appendChild(el('em',0,'Your plate is empty. Tap ingredients below.'));return}
+var pos=[],n=Math.min(k.length,13);
+if(n===1)pos=[[50,50]];else{var o=Math.min(n,8),inn=n-o;
+for(var a=0;a<o;a++){var g=a/o*6.2832-1.5708;pos.push([50+33*Math.cos(g),50+33*Math.sin(g)])}
+for(var b=0;b<inn;b++){var h=b/inn*6.2832;pos.push([50+(inn===1?0:14)*Math.cos(h),50+(inn===1?0:14)*Math.sin(h)])}}
+for(var q=0;q<n;q++){var s=el('span',0,by[k[q]][2]);s.style.left=pos[q][0]+'%';s.style.top=pos[q][1]+'%';P.appendChild(s)}
+P.appendChild(el('b',0,k.length+(k.length===1?' item':' items')))}
+function ok(r){var g=$('goal').value;return g==='protein'?r.p>=30:g==='light'?r.kcal<=450:g==='quick'?r.time<=20:g==='veg'?r.v:true}
+function stat(v,l,c){var d=el('div',c||'');d.appendChild(el('b',0,v));d.appendChild(el('span',0,l));return d}
+function card(r){var have=r.ing.filter(function(i){return sel[i]}),miss=r.ing.filter(function(i){return!sel[i]});
+var c=el('article','card'),bd=el('div','band');bd.style.background=r.t;bd.appendChild(el('i',0,r.e));
+var tx=el('div');tx.appendChild(el('strong',0,r.c));tx.appendChild(el('small',0,r.w));bd.appendChild(tx);c.appendChild(bd);
+var b=el('div','body'),row=el('div','row');row.appendChild(el('h3',0,r.n));if(!miss.length)row.appendChild(el('span','badge','Ready to cook'));b.appendChild(row);
+var st=el('div','stats');st.appendChild(stat(r.time+' min','to cook'));st.appendChild(stat(String(r.kcal),'kcal'));st.appendChild(stat(r.p+' g','protein','p'));if(r.v)st.appendChild(stat('Vegetarian',''));b.appendChild(st);
+b.appendChild(el('p','small','You have '+have.length+' of '+r.ing.length+' ingredients'));
+var bar=el('div','bar'),f=document.createElement('i');f.style.width=Math.round(have.length/r.ing.length*100)+'%';bar.appendChild(f);b.appendChild(bar);
+if(miss.length)b.appendChild(el('p','small','Missing: '+miss.map(function(i){return by[i]?by[i][1].toLowerCase():i}).join(', ')));
+var d=document.createElement('details');d.appendChild(el('summary',0,'The story and how to make it'));
+d.appendChild(el('h4',0,'Where it comes from'));d.appendChild(el('p',0,r.s));d.appendChild(el('h4',0,'Method'));
+var ol=document.createElement('ol');r.st.forEach(function(x){ol.appendChild(el('li',0,x))});d.appendChild(ol);b.appendChild(d);c.appendChild(b);return c}
+function box(h,p,btn){var d=el('div','empty');d.appendChild(el('h3',0,h));d.appendChild(el('p',0,p));if(btn)d.appendChild(btn);return d}
+function render(){plate();L.innerHTML='';var n=Object.keys(sel).length;
+if(n<2){cur=[];C.textContent='';var b=el('button','btn solid','Try chicken, rice and garlic');b.type='button';
+b.onclick=function(){sel={chicken:1,rice:1,garlic:1};sync();render()};L.appendChild(box('Start with what’s in your kitchen','Pick at least two ingredients to see dinner ideas from around the world.',b));jt(0);return}
+cur=R.map(function(r){var m=r.ing.filter(function(i){return sel[i]}).length;return{r:r,m:m,q:m/r.ing.length}}).filter(function(x){return x.m>=2&&x.q>=.5&&ok(x.r)}).sort(function(a,b){return b.q-a.q||b.m-a.m||b.r.p-a.r.p});
+if(!cur.length){C.textContent='No dinner ideas yet';L.appendChild(box('Nothing matches this combination','Add one or two more ingredients, or set the filter to “Any kind”.'));jt(0);return}
+C.textContent=cur.length+(cur.length===1?' dinner idea':' dinner ideas');cur.forEach(function(x){L.appendChild(card(x.r))});jt(cur.length)}
+function jt(n){$('jump').textContent=n?'Show '+n+(n===1?' dinner idea':' dinner ideas'):'Show dinner ideas'}
+$('goal').onchange=render;$('clear').onclick=function(){sel={};sync();render()};
+$('jump').onclick=function(){$('results').scrollIntoView();$('results').focus({preventScroll:true})};
+$('surprise').onclick=function(){var cs=L.querySelectorAll('.card');if(!cs.length){$('results').scrollIntoView();return}
+[].forEach.call(cs,function(c){c.classList.remove('pick')});var c=cs[Math.floor(Math.random()*cs.length)];c.classList.add('pick');c.querySelector('details').open=true;c.scrollIntoView({block:'center'})};
+render()})();
+</script>
+</body>
+</html>
