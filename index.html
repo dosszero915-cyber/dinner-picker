@@ -156,7 +156,7 @@ var bar=el('div','bar'),f=document.createElement('i');f.style.width=Math.round(h
 if(miss.length)b.appendChild(el('p','small','Missing: '+miss.map(function(i){return by[i]?by[i][1].toLowerCase():i}).join(', ')));
 var d=document.createElement('details');d.appendChild(el('summary',0,'The story and how to make it'));
 d.appendChild(el('h4',0,'Where it comes from'));d.appendChild(el('p',0,r.s));d.appendChild(el('h4',0,'Method'));
-var ol=document.createElement('ol');r.st.forEach(function(x){ol.appendChild(el('li',0,x))});d.appendChild(ol);b.appendChild(d);c.appendChild(b);return c}
+var ol=document.createElement('ol');r.st.forEach(function(x){ol.appendChild(el('li',0,x))});d.appendChild(ol);var pa=document.createElement('a');pa.href=r.n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'.html';pa.textContent='Open the full page for this dish';d.appendChild(pa);b.appendChild(d);c.appendChild(b);return c}
 function box(h,p,btn){var d=el('div','empty');d.appendChild(el('h3',0,h));d.appendChild(el('p',0,p));if(btn)d.appendChild(btn);return d}
 function render(){plate();L.innerHTML='';var n=Object.keys(sel).length;
 if(n<2){cur=[];C.textContent='';var b=el('button','btn solid','Try chicken, rice and garlic');b.type='button';
